@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root,
+.App {
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+#home {
+    background: url("./assets//images/bg.jpg") !important;
+    background-position: center;
+    background-size: cover !important;
+}
+
+#svg-turkiye-haritasi-container {
+    height: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#city-result-container::before {
+    content: "";
+    position: absolute;
+    background-color: rgba(255, 255, 255, .2);
+    height: 200px;
+    left: -150px;
+    width: 60px;
+    transform: skewX(-30deg)
+}
+
+#city-result-container:hover:before {
+    animation: slide .5s ease-in-out;
+}
+
+@keyframes slide {
+
+    0% {
+        left: -150px;
+    }
+
+    100% {
+        left: 110%;
+    }
+}
