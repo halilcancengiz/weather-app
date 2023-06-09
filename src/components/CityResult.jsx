@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import { groupForecastDataByDate } from '../utils/groupForecastDataByDate';
 import Card from './Card';
 import { IoReturnDownBackOutline } from "../assets/icons";
 import { Tooltip } from 'antd';
+import { toast } from 'react-toastify';
 
 
 const CityResult = () => {
     const location = useLocation();
+    const navigate = useNavigate()
     const [result, setResult] = useState();
     const { data, error, loading } = useFetch(location.pathname.slice(1,));
 
     useEffect(() => {
         if (data) {
             setResult(groupForecastDataByDate(data));
+        } else {
+            toast.error("Şehir Bulunamadı")
+            navigate("/", { replace: true })
         }
     }, [data]);
 
     return (
-        <div  style={{ background: `url(https://images.pexels.com/photos/2680270/pexels-photo-2680270.jpeg?cs=srgb&dl=pexels-mudassir-ali-2680270.jpg&fm=jpg)`, backgroundSize: "cover" }} className="min-h-screen flex items-center justify-center">
+        <div style={{ background: `url(https://images.pexels.com/photos/2680270/pexels-photo-2680270.jpeg?cs=srgb&dl=pexels-mudassir-ali-2680270.jpg&fm=jpg)`, backgroundSize: "cover" }} className="min-h-screen flex items-center justify-center">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5  max-w-[1300px] w-full mx-2">
                 {result &&
                     result.map((w, index) => (

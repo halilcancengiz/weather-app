@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const SwitchButton = ({ toggle, setToggle }) => {
-    
+    const changeToggle = () => {
+        const newToggle = !toggle;
+        setToggle(newToggle);
+        localStorage.setItem("toggle", newToggle);
+    }
+
     return (
         <div
-            onClick={() => setToggle(!toggle)}
+            onClick={changeToggle}
             className="h-10 bg-black w-60 mx-auto rounded-full relative overflow-hidden transition-all duration-300"
             style={{
                 boxShadow: "inset 0px 0px 20px rgba(0,0,0,.6)",
