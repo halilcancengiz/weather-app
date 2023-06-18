@@ -21,7 +21,7 @@ const SwitchButton = ({ toggle, setToggle }) => {
                 className={`absolute w-1/2 bg-[#005B79] h-[80%] top-[50%] ${toggle ? "left-[2%]" : "left-[48%]"
                     } translate-y-[-50%] rounded-full transition-all duration-500 ease-in-out flex items-center justify-center text-white`}
             >
-                {toggle ? "MAP" : "SEARCH"}
+                {toggle ? "Harita" : "Ara"}
             </div>
         </div>
     )
